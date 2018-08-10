@@ -4,6 +4,10 @@ from rest_framework import routers
 from django.conf.urls import url
 
 
+router = routers.DefaultRouter()
+
+#router.register('dolar', views.usd)
+#router.register('dolar', views.dolar)
 
 urlpatterns = [
 path('', include(router.urls)),
