@@ -5,6 +5,7 @@ from .serializers import DolarSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -31,9 +32,17 @@ def clp(request):
     try:
         dlr = Dolar.objects.get(date=date)
     except Dolar.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return JsonResponse(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         response=usd*float(dlr.value)
-        #return Response(serializer.data)
-        return Response("el valor en clp "+str(response)+" del monto en dolares "+str(usd)+", en la fecha "+ str(date))
+        return Response("el valor en clp es "+str(response)+" del monto en dolares "+str(usd)+", en la fecha "+ str(date))
+
+@api_view(['GET'])
+
+def dolar_list(request):
+
+    if request.method == 'GET':
+        dolars = Dolar.objects.all()
+        serializer = DolarSerializer(dolars, many=True)
+        return JsonResponse(serializer.data, safe=False)
