@@ -36,4 +36,4 @@ def clp(request):
     if request.method == 'GET':
         response=usd*float(dlr.value)
         #return Response(serializer.data)
-        return Response("el valor en clp "+str(response)+"del monto en dolares "+str(usd)+", en la fecha"+ str(date))
+        return Response("el valor en clp "+str(response)+" del monto en dolares "+str(usd)+", en la fecha "+ str(date))
