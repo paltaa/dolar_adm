@@ -3,7 +3,7 @@ from . import  views
 from rest_framework import routers
 from django.conf.urls import url
 
-#import scraper
+import scraper
 
 
 router = routers.DefaultRouter()

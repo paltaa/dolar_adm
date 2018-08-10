@@ -27,11 +27,11 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Then uncomment
+Then in another terminar cd to project and run:
 ```
-import scraper
+python scraper.py
 ```
-from line 6 in dolar/urls.py
+App ready for testing.
 
 for usd to clp make requests to:  
 [GET:http://127.0.0.1:8000/clp?usd=XXXX&date=yyyymmdd ]  
