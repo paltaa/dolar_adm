@@ -33,7 +33,7 @@ import scraper
 ```
 from line 6 in dolar/urls.py
 
-for usd to clp make requests to:
-[GET:http://127.0.0.1:8000/clp?usd=XXXX&date=yyyymmdd ]
-for clp to usd make requests to:
+for usd to clp make requests to:  
+[GET:http://127.0.0.1:8000/clp?usd=XXXX&date=yyyymmdd ]  
+for clp to usd make requests to:  
 [GET:http://127.0.0.1:8000/usd?clp=XXXX&date=yyyymmdd ]
