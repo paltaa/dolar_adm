@@ -3,13 +3,7 @@ from . import  views
 from rest_framework import routers
 from django.conf.urls import url
 
-import scraper
 
-
-router = routers.DefaultRouter()
-
-#router.register('dolar', views.usd)
-#router.register('dolar', views.dolar)
 
 urlpatterns = [
 path('', include(router.urls)),
