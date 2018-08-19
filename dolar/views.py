@@ -8,7 +8,6 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 # Create your views here.
 
-
 @api_view(['GET'])
 
 def usd(request):
@@ -20,9 +19,7 @@ def usd(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        #serializer = DolarSerializer(dlr)
         response=clp/float(dlr.value)
-        #return Response(serializer.data)
         return Response("el valor en dólares "+ str(response)+" del monto en pesos "+str(clp)+", en la fecha "+ str(date))
 @api_view(['GET'])
 

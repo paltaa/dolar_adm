@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import urllib.request
+from urllib.request import urlopen
 import pandas as pd
 from dateutil import parser
 from dolar.models import Dolar
@@ -25,7 +25,7 @@ def scraper(year):
         html_doc= "http://www.sii.cl/valores_y_fechas/dolar/dolar"+year_str+".htm#"
     elif(year >= 1990 and year < 2013):
         html_doc= "http://www.sii.cl/pagina/valores/dolar/dolar"+year_str+".htm"
-    url = urllib.request.urlopen(html_doc)
+    url = urlopen(html_doc)
     with url as fp:
         soup = BeautifulSoup(fp)
     if ( year >=  2013):
@@ -40,7 +40,6 @@ def scraper(year):
             value=new_table.iloc[day][month].replace(',','.')
             if(value != '' and value != '>\xa0' and value !='\xa0' ):
                 date=parser.parse(year_str+'-'+str(month)+'-'+str(day))
-                print(value)
                 value=float(value)
                 dolarByDate.append((date, value))
     return dolarByDate
@@ -50,5 +49,11 @@ for year in range(1991,2019):
     for tuples in dolar_year:
         dolar=Dolar(date=tuples[0], value=tuples[1])
 
-        print ( tuples )
-        print(dolar.save())
+        try:
+            dolar.save()
+        except:
+            print ('Value already saved')
+
+        else:
+            print ( tuples )
+            print('Saved')

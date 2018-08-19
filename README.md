@@ -24,13 +24,10 @@ git clone -https://github.com/paltaa/dolar_adm.git
 cd to directory and run:
 ```
 python manage.py migrate
+python manage.py scrap
 python manage.py runserver
 ```
 
-Then in another terminar cd to project and run:
-```
-python scraper.py
-```
 App ready for testing.
 
 for usd to clp make requests to:  
