@@ -1,15 +1,22 @@
 from django.core.management.base import BaseCommand, CommandError
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-import pandas as pd
-from dateutil import parser
 from dolar.models import Dolar
-from scraper import html_to_df
-
+from dolar.functions.scraper import scraper
 
 class Command(BaseCommand):
 
     help= 'Scraps the data from SIIs site from 1990 to current date'
 
     def handle(self, *args, **options):
-        exec(open('scraper.py').read())
+        #exec(open('scraper.py').read())
+        for year in range(1991,2019):
+            dolar_year=scraper(year)
+            for tuples in dolar_year:
+                dolar=Dolar(date=tuples[0], value=tuples[1])
+                try:
+                    dolar.save()
+                except:
+                    print ('Value already saved')
+
+                else:
+                    print ( tuples )
+                    print('Saved')
