@@ -31,6 +31,6 @@ App ready for testing.
 for usd to clp make requests to:  
 [GET:http://127.0.0.1:8000/clp?usd=XXXX&date=yyyymmdd ]  
 for clp to usd make requests to:  
-[GET:http://127.0.0.1:8000/usd?clp=XXXX&date=yyyymmdd ]
+[GET:http://127.0.0.1:8000/usd?clp=XXXX&date=yyyymmdd ]  
 for all saved dolars:  
 [GET:http://127.0.0.1:8000/dolar_list ]
