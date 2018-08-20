@@ -12,11 +12,13 @@ class Command(BaseCommand):
             dolar_year=scraper(year)
             for tuples in dolar_year:
                 dolar=Dolar(date=tuples[0], value=tuples[1])
-                try:
-                    dolar.save()
-                except:
-                    print ('Value already saved')
-
+                if( not Dolar.objects.get(date=tuples[0])):
+                    try:
+                        dolar.save()
+                    except:
+                        print('Saving error ocurred')
+                    else:
+                        print (tuples)
+                        print ('Saved')
                 else:
-                    print ( tuples )
-                    print('Saved')
+                    print ('Value already saved')

@@ -4,7 +4,7 @@ from django.db import models
 
 class Dolar(models.Model):
     value = models.DecimalField(max_digits = 7, decimal_places = 3 )
-    date = models.DateField( blank=True, primary_key=True)
+    date = models.DateField( primary_key=True , unique=True)
 
     def __str__(self):
         return self.value
