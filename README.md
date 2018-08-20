@@ -17,8 +17,6 @@ You need to install django, django api rest framework and BeautifulSoup for scra
 
 ```
 pip install djangorestframework
-pip install markdown       # Markdown support for the browsable API.
-pip install django-filter  # Filtering support
 git clone -https://github.com/paltaa/dolar_adm.git
 ```
 cd to directory and run:
@@ -34,3 +32,5 @@ for usd to clp make requests to:
 [GET:http://127.0.0.1:8000/clp?usd=XXXX&date=yyyymmdd ]  
 for clp to usd make requests to:  
 [GET:http://127.0.0.1:8000/usd?clp=XXXX&date=yyyymmdd ]
+for all saved dolars:  
+[GET:http://127.0.0.1:8000/dolar_list ]

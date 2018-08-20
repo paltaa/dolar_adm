@@ -21,4 +21,4 @@ class Command(BaseCommand):
                         print (tuples)
                         print ('Saved')
                 else:
-                    print ('Value already saved')
+                    print ('Value already saved for date {}'.format(tuples[0]))

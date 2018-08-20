@@ -1,7 +1,8 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-from dolar.functions.html_to_df import html_to_df
 from dateutil import parser
+import pandas as pd
+
 
 def scraper(year):
     year_str=str(year)
@@ -27,3 +28,17 @@ def scraper(year):
                 value=float(value)
                 dolarByDate.append((date, value))
     return dolarByDate
+
+def html_to_df( table ):
+    new_table = pd.DataFrame(columns=range(0,13), index= range(0,32))
+    row_marker = 0
+    for row in table.find_all('tr'):
+        column_marker = 0
+        columns = row.find_all('td')
+        for column in columns:
+            new_table.iat[row_marker,column_marker+1] = column.get_text()
+            column_marker += 1
+        row_marker += 1
+        if(row_marker==32):
+            break
+    return new_table
