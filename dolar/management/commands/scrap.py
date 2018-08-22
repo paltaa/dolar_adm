@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from dolar.models import Dolar
 from dolar.functions.scraper import scraper
+from django.shortcuts import get_object_or_404
 
 class Command(BaseCommand):
 
@@ -8,11 +9,15 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         #exec(open('scraper.py').read())
-        for year in range(1991,2019):
+        for year in range(1990,2019):
             dolar_year=scraper(year)
             for tuples in dolar_year:
                 dolar=Dolar(date=tuples[0], value=tuples[1])
-                if( not Dolar.objects.get(date=tuples[0])):
+                try:
+                    dlr=Dolar.objects.get(date=tuples[0])
+                except:
+                    dlr=None
+                if( dlr == None):
                     try:
                         dolar.save()
                     except:
